@@ -1,5 +1,6 @@
 package com.works.derrickchung.asteriatedgrail;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import android.widget.EditText;
 
 public class DetailActivity extends AppCompatActivity {
 
+    public static final String EXTRA_MESSAGE = "helloWorld";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,10 +18,10 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     public void sendMessage(View view){
-        Intent i = new Intent(this, MainActivity.class);
-        EditText editText = (EditText) findViewById(R.id.editText);
+        Intent intent = new Intent(this, MainActivity.class);
+        EditText editText = this.<EditText>findViewById(R.id.editText);
         String message = editText.getText().toString();
-        getIntent().putExtra(EXTRA_MESSAGE, message);
-        startActivity(i);
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
     }
 }
